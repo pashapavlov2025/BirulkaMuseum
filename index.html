@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="be">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бірулька — Беларуская народная гульня | Музей народных гульняў Беларусі</title>
+<meta name="description" content="Бірулька — старажытная беларуская народная гульня з шарыкам і нахіленай дошкай. Гісторыя, правілы, майстар-класы.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --red: #c8102e;
+    --red-dark: #9a0c23;
+    --cream: #faf6ee;
+    --parchment: #f0e8d8;
+    --brown: #5c3d2e;
+    --brown-light: #8b6f5e;
+    --green: #2d5a27;
+    --green-light: #4a7c3f;
+    --text: #2c2418;
+    --text-light: #6b5d4f;
+    --gold: #c4973b;
+    --gold-light: #e8c96a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ====== HEADER ====== */
+  .top-bar {
+    background: var(--brown);
+    color: var(--parchment);
+    font-size: 0.78rem;
+    padding: 6px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.3px;
+  }
+
+  .top-bar a { color: var(--gold-light); text-decoration: none; }
+  .top-bar a:hover { text-decoration: underline; }
+
+  .lang-switch { display: flex; gap: 10px; }
+  .lang-switch span { cursor: pointer; opacity: 0.6; }
+  .lang-switch span.active { opacity: 1; border-bottom: 1px solid var(--gold-light); }
+
+  header {
+    background: linear-gradient(180deg, #3a2820 0%, #5c3d2e 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8102e' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 36px;
+    text-align: center;
+  }
+
+  .ornament-top {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .ornament-diamond {
+    width: 10px; height: 10px;
+    background: var(--red);
+    transform: rotate(45deg);
+  }
+  .ornament-diamond:nth-child(2) { width: 14px; height: 14px; }
+
+  .museum-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+  }
+
+  .header-desc {
+    font-size: 0.95rem;
+    color: #bfae98;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ====== NAV ====== */
+  nav {
+    background: var(--red-dark);
+    border-bottom: 3px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav ul {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    display: block;
+    padding: 14px 22px;
+    color: #f5e6d0;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  nav a:hover { background: rgba(0,0,0,0.2); }
+  nav a.active { background: rgba(0,0,0,0.25); border-bottom: 2px solid var(--gold-light); }
+
+  /* ====== MAIN CONTENT ====== */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .section { margin-bottom: 50px; }
+
+  .section-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--brown);
+    margin-bottom: 18px;
+    line-height: 1.25;
+  }
+
+  h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--red);
+    margin-top: 10px;
+  }
+
+  p { margin-bottom: 14px; color: var(--text); font-size: 1.02rem; }
+  p.muted { color: var(--text-light); font-size: 0.92rem; }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--brown);
+    line-height: 1.7;
+    border-left: 3px solid var(--red);
+    padding-left: 20px;
+    margin-bottom: 24px;
+  }
+
+  /* Quote block */
+  blockquote {
+    background: var(--parchment);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-radius: 0 8px 8px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--brown);
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    font-style: normal;
+    color: var(--text-light);
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  /* Image placeholders */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .photo-card {
+    background: var(--parchment);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0d5c4;
+    transition: transform 0.2s;
+  }
+
+  .photo-card:hover { transform: translateY(-3px); }
+
+  .photo-placeholder {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .photo-placeholder.wood {
+    background: linear-gradient(135deg, #8B6914 0%, #A0782C 30%, #725B12 60%, #8B6914 100%);
+  }
+  .photo-placeholder.forest {
+    background: linear-gradient(135deg, #2d5a27 0%, #4a7c3f 40%, #1a3d15 70%, #2d5a27 100%);
+  }
+  .photo-placeholder.village {
+    background: linear-gradient(135deg, #7a8b5c 0%, #9aab7c 40%, #5c6b3e 100%);
+  }
+  .photo-placeholder.craft {
+    background: linear-gradient(135deg, #a0522d 0%, #cd853f 50%, #8b4513 100%);
+  }
+  .photo-placeholder.game {
+    background: linear-gradient(135deg, #5c3d2e 0%, #8b6f5e 50%, #3a2820 100%);
+  }
+  .photo-placeholder.kids {
+    background: linear-gradient(135deg, #c8102e 0%, #e8445a 40%, #9a0c23 100%);
+  }
+
+  .photo-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .photo-caption {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  .photo-caption strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin: 24px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gold);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+  }
+
+  .timeline-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--brown);
+  }
+
+  .timeline-text {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* Rules table */
+  .rules-card {
+    background: var(--parchment);
+    border-radius: 10px;
+    padding: 28px;
+    border: 1px solid #e0d5c4;
+    margin: 24px 0;
+  }
+
+  .rules-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--brown);
+    margin-bottom: 16px;
+  }
+
+  .rule-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+
+  .rule-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .rule-text { font-size: 0.95rem; }
+
+  /* Scoring zones */
+  .scoring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .score-zone {
+    text-align: center;
+    padding: 16px 10px;
+    border-radius: 8px;
+    border: 2px solid;
+  }
+
+  .score-zone.z100 { background: #fef2f2; border-color: #ef4444; }
+  .score-zone.z75 { background: #fff7ed; border-color: #f97316; }
+  .score-zone.z50 { background: #fefce8; border-color: #eab308; }
+  .score-zone.z25 { background: #f0fdf4; border-color: #22c55e; }
+
+  .score-pts {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .score-zone.z100 .score-pts { color: #ef4444; }
+  .score-zone.z75 .score-pts { color: #f97316; }
+  .score-zone.z50 .score-pts { color: #eab308; }
+  .score-zone.z25 .score-pts { color: #22c55e; }
+
+  .score-name {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* Events banner */
+  .event-banner {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+    border-radius: 12px;
+    padding: 28px;
+    color: white;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+  }
+
+  .event-date {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .event-day { font-size: 2rem; font-weight: 700; }
+  .event-month { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+  .event-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+
+  .event-info p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin: 0; }
+
+  /* CTA */
+  .cta-btn {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+
+  .cta-btn:hover { background: var(--red-dark); }
+
+  /* Footer */
+  footer {
+    background: var(--brown);
+    color: #bfae98;
+    padding: 40px 24px;
+    margin-top: 60px;
+  }
+
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+  }
+
+  footer h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  footer p { font-size: 0.85rem; color: #a09080; margin-bottom: 6px; line-height: 1.5; }
+  footer a { color: var(--gold-light); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  .footer-bottom {
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.75rem;
+    color: #7a6b5c;
+    text-align: center;
+  }
+
+  /* Ornament divider */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px 0;
+    color: var(--red);
+  }
+
+  .orn-line { width: 60px; height: 1px; background: var(--red); opacity: 0.3; }
+  .orn-sym { font-size: 1.2rem; }
+
+  @media (max-width: 700px) {
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.6rem; }
+    .footer-inner { grid-template-columns: 1fr; }
+    nav a { padding: 10px 14px; font-size: 0.8rem; }
+    .event-banner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <span>Музей народных гульняў Беларусі · г. Гродна, вул. Замкавая 18</span>
+  <div class="lang-switch">
+    <span class="active">BY</span>
+    <span>RU</span>
+    <span>EN</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="ornament-top">
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+    </div>
+    <p class="museum-label">Музей народных гульняў Беларусі</p>
+    <h1>Бірулька</h1>
+    <p class="subtitle">Старажытная беларуская народная гульня з шарыкам і нахіленай дошкай</p>
+    <p class="header-desc">
+      Адна з самых папулярных народных гульняў Гродзенскай і Брэсцкай абласцей.
+      Вядомая з XVII стагоддзя, бірулька захоўвае сваю папулярнасць на вясковых кірмашах і сёння.
+    </p>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <ul>
+    <li><a href="#history" class="active">Гісторыя</a></li>
+    <li><a href="#rules">Правілы</a></li>
+    <li><a href="#gallery">Галерэя</a></li>
+    <li><a href="#events">Кірмашы</a></li>
+    <li><a href="#workshop">Майстар-клас</a></li>
+  </ul>
+</nav>
+
+<!-- Main content -->
+<main>
+
+  <!-- History section -->
+  <section class="section" id="history">
+    <p class="section-label">Гісторыя</p>
+    <h2>Ад глінянага шарыка да сучаснай гульні</h2>
+
+    <p class="lead">
+      Бірулька — гэта традыцыйная беларуская настольная гульня, у якой гулец запускае шарык па нахіленай драўлянай дошцы з лункамі. Кожная лунка адпавядае звяру Белавежскай пушчы і прыносіць розную колькасць ачкоў.
+    </p>
+
+    <p>
+      Першыя згадкі пра бірульку сустракаюцца ў запісах Гродзенскага павету канца XVII стагоддзя. Этнограф Міхаіл Федароўскі ў сваім зборніку «Люд беларускі» (1897) апісвае гульню як «забаву з шарыкам на дошцы з ямкамі, якую дзеці робяць з альховай кары ды гліны».
+    </p>
+
+    <blockquote>
+      «Дзяўчаты і хлопцы збіраліся ў хаце, ставілі дошку на калодку, і хто першы трапіў шарыкам у зубра — таму бабуля давала першы блін.»
+      <cite>— Запіс з в. Гудзевічы, Мастоўскі раён, 1923 г. (архіў ІМЭФ НАН Беларусі)</cite>
+    </blockquote>
+
+    <p>
+      Дошку для бірулькі выразалі з альхі — дрэва, якое растуць у вялікай колькасці на беларускіх балотах. Шарыкі лепілі з гліны і абпальвалі ў печы. У заможных сем'ях шарыкі рабілі са шкла або нават з бурштыну.
+    </p>
+
+    <div class="ornament-divider">
+      <div class="orn-line"></div>
+      <div class="orn-sym">◆</div>
+      <div class="orn-line"></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--brown);margin-bottom:16px;">Храналогія</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">~1680-я гг.</div>
+        <div class="timeline-text">Першыя вядомыя згадкі ў інвентарных запісах Гродзенскага павету</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1897</div>
+        <div class="timeline-text">М. Федароўскі фіксуе гульню ў зборніку «Люд беларускі»</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1920-я гг.</div>
+        <div class="timeline-text">Бірулька становіцца стандартнай забавай на вясковых кірмашах Гродзеншчыны і Брэстчыны</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1957</div>
+        <div class="timeline-text">Этнаграфічная экспедыцыя АН БССР фіксуе гульню ў 14 вёсках Мастоўскага і Свіслачскага раёнаў</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1990-я гг.</div>
+        <div class="timeline-text">Адраджэнне цікавасці да народных гульняў; бірулька ўключана ў праграму кірмашоў «Казюкі» і «Гродзенскія ўзоры»</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-text">Адкрыццё Музея народных гульняў у Гродне; бірулька — цэнтральны экспанат</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <p class="section-label">Галерэя</p>
+    <h2>Бірулька ў фатаграфіях</h2>
+
+    <div class="photo-grid">
+      <div class="photo-card">
+        <div class="photo-placeholder wood">🪵</div>
+        <div class="photo-caption">
+          <strong>Дошка з альхі, пач. XX ст.</strong>
+          З калекцыі Гродзенскага гісторыка-археалагічнага музея. Рэстаўрацыя 2017 г.
+        </div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-placeholder forest">🦬</div>
+        <div class="photo-caption">
+          <strong>Лунка «Зубр» — вышэйшы бал</strong>
+          Самая маленькая лунка на дошцы, размешчаная ў верхняй частцы поля.
+        </div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-placeholder craft">⚙️</div>
+        <div class="photo-caption">
+          <strong>Штурхалка з бярозавай кары</strong>
+          Пружынны механізм запуску шарыка. Рэканструкцыя паводле апісання 1923 г.
+        </div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-placeholder village">🏡</div>
+        <div class="photo-caption">
+          <strong>Кірмаш у в. Гудзевічы, 1962 г.</strong>
+          Дзеці гуляюць у бірульку на штогадовым восеньскім кірмашы.
+        </div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-placeholder game">🎯</div>
+        <div class="photo-caption">
+          <strong>Сучасная версія з картону</strong>
+          Майстар-клас для дзяцей у Музеі народных гульняў, 2023 г.
+        </div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-placeholder kids">👧</div>
+        <div class="photo-caption">
+          <strong>Фестываль «Гродзенскія ўзоры»</strong>
+          Турнір па бірульцы сярод вучняў пачатковых класаў, 2024 г.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules -->
+  <section class="section" id="rules">
+    <p class="section-label">Правілы гульні</p>
+    <h2>Як гуляць у бірульку</h2>
+
+    <div class="rules-card">
+      <h3>Падрыхтоўка</h3>
+      <div class="rule-row">
+        <div class="rule-icon">1</div>
+        <div class="rule-text">Паставіць дошку на нахіл (5-7 градусаў). Традыцыйна пад задні край падкладвалі палена.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">2</div>
+        <div class="rule-text">Змясціць гліняны (або шкляны) шарык у пускавы жолаб справа ўнізе.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">3</div>
+        <div class="rule-text">Пацягнуць штурхалку ўніз і адпусціць — шарык вылятае на поле.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">4</div>
+        <div class="rule-text">Шарык адскоквае ад штыркоў-адбойнікаў і трапляе ў адну з лунак.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">5</div>
+        <div class="rule-text">Колькасць ачкоў залежыць ад таго, у якую лунку трапіў шарык.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--brown);margin:24px 0 16px;">Зоны ачкоў</h3>
+
+    <p>Традыцыйна лункі называліся па звярах Белавежскай пушчы. Чым радчэйшы звер — тым больш ачкоў:</p>
+
+    <div class="scoring-grid">
+      <div class="score-zone z100">
+        <div class="score-pts">100</div>
+        <div class="score-name">🦬 Зубр</div>
+      </div>
+      <div class="score-zone z75">
+        <div class="score-pts">75</div>
+        <div class="score-name">🫎 Лось</div>
+      </div>
+      <div class="score-zone z50">
+        <div class="score-pts">50</div>
+        <div class="score-name">🦌 Алень</div>
+      </div>
+      <div class="score-zone z25">
+        <div class="score-pts">25</div>
+        <div class="score-name">🐇 Заяц</div>
+      </div>
+    </div>
+
+    <p class="muted">
+      Гулец, які першым набірае 500 ачкоў, абвяшчаецца «лясным каралём» (або «лясной каралевай»).
+      На традыцыйных кірмашах пераможца атрымліваў гліняны свісток у выглядзе зубра.
+    </p>
+  </section>
+
+  <!-- Events -->
+  <section class="section" id="events">
+    <p class="section-label">Бліжэйшыя падзеі</p>
+    <h2>Кірмашы і фестывалі 2026</h2>
+
+    <div class="event-banner">
+      <div class="event-date">
+        <div class="event-day">14</div>
+        <div class="event-month">Чэрвень</div>
+      </div>
+      <div class="event-info">
+        <h3>Фестываль «Гродзенскія ўзоры»</h3>
+        <p>Штогадовы турнір па бірульцы. Катэгорыі: дзеці 6-10, 11-14, дарослыя. Рэгістрацыя адкрыта!</p>
+        <a href="#" class="cta-btn" style="margin-top:12px;">Зарэгістравацца</a>
+      </div>
+    </div>
+
+    <div class="event-banner" style="background:linear-gradient(135deg, var(--brown) 0%, var(--brown-light) 100%);">
+      <div class="event-date">
+        <div class="event-day">3</div>
+        <div class="event-month">Жнівень</div>
+      </div>
+      <div class="event-info">
+        <h3>Майстар-клас «Зрабі бірульку сам»</h3>
+        <p>Музей народных гульняў, Гродна. Для дзяцей 8+ з бацькамі. Усе матэрыялы ўключаны.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workshop -->
+  <section class="section" id="workshop">
+    <p class="section-label">Майстар-клас</p>
+    <h2>Зрабіце бірульку дома</h2>
+
+    <p>Сучасную версію бірулькі можна зрабіць з простых матэрыялаў — картону, шпажак і пружыны. Гэта выдатны школьны або сямейны праект!</p>
+
+    <div class="rules-card">
+      <h3>Матэрыялы</h3>
+      <div class="rule-row">
+        <div class="rule-icon" style="background:var(--brown);">📦</div>
+        <div class="rule-text">Гофракартон (2 лісты А3) — для дна і борцікаў</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon" style="background:var(--green);">🔩</div>
+        <div class="rule-text">Пружына сціску (Ø8-10 мм, даўжыня 5 см)</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon" style="background:var(--gold);">🔮</div>
+        <div class="rule-text">Шкляны шарык (марбл) Ø16 мм</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon" style="background:var(--red);">🪡</div>
+        <div class="rule-text">Драўляныя шпажкі (10-12 шт.) для штыркоў-адбойнікаў</div>
+      </div>
+    </div>
+
+    <p>
+      Поўную інструкцыю з чарцяжамі і памерамі можна спампаваць ніжэй або атрымаць на майстар-класе ў музеі.
+    </p>
+
+    <a href="#" class="cta-btn">📄 Спампаваць інструкцыю (PDF)</a>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Музей народных гульняў Беларусі</h4>
+      <p>г. Гродна, вул. Замкавая, 18</p>
+      <p>Працоўныя дні: аўт.–нд. 10:00–18:00</p>
+      <p>Панядзелак — выхадны</p>
+      <p style="margin-top:10px;">📞 +375 (152) 77-42-18</p>
+      <p>✉️ info@biruĺka.museum.by</p>
+    </div>
+    <div>
+      <h4>Раздзелы</h4>
+      <p><a href="#history">Гісторыя</a></p>
+      <p><a href="#rules">Правілы</a></p>
+      <p><a href="#gallery">Галерэя</a></p>
+      <p><a href="#events">Кірмашы</a></p>
+      <p><a href="#workshop">Майстар-клас</a></p>
+    </div>
+    <div>
+      <h4>Партнёры</h4>
+      <p>Гродзенскі абласны выканаўчы камітэт</p>
+      <p>ІМЭФ НАН Беларусі</p>
+      <p>Нацыянальны гіст. музей</p>
+      <p>Беларускі фонд культуры</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2019–2026 Музей народных гульняў Беларусі · Усе правы абаронены · <a href="#">Палітыка прыватнасці</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('nav a, a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+    if (!href || href === '#') { e.preventDefault(); return; }
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const navH = document.querySelector('nav').offsetHeight;
+      const y = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+});
+
+// Highlight active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  const navH = document.querySelector('nav').offsetHeight + 40;
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - navH) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
